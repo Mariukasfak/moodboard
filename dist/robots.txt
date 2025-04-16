@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and private paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Disallow Netlify special system files
+Disallow: /_redirects
+Disallow: /_headers
+
+# Allow all bots to all public content
+Allow: /paslaugos/
+Allow: /naujienos/
+Allow: /apie-mus/
+Allow: /kontaktai/
+
+# Sitemap location
+Sitemap: https://transportuok.lt/sitemap.xml

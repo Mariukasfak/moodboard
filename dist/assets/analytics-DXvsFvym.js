@@ -1,0 +1,1 @@
+const t=(t,s={})=>{window.gtag&&window.gtag("event",t,s)},s=(s,a=!0)=>{t("form_submission",{form_name:s,form_status:a?"success":"error"})},a=(s,a="")=>{t("cta_click",{cta_id:s,cta_text:a})};export{s as a,a as t};
