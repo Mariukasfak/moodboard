@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Pagrindiniai šriftai */
+@layer base {
+  @font-face {
+    font-family: 'System';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local(".SFNS-Regular"), local(".SFNSText-Regular"), local(".HelveticaNeueDeskInterface-Regular"), local(".LucidaGrandeUI"), local("Segoe UI"), local("Ubuntu"), local("Roboto-Regular"), local("DroidSans"), local("Tahoma");
+  }
+
+  @font-face {
+    font-family: 'System';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local(".SFNS-Bold"), local(".SFNSText-Bold"), local(".HelveticaNeueDeskInterface-Bold"), local(".LucidaGrandeUI"), local("Segoe UI Bold"), local("Ubuntu Bold"), local("Roboto-Bold"), local("DroidSans-Bold"), local("Tahoma Bold");
+  }
+}
+
+/* Baziniai stiliai su sisteminiais šriftais */
+@layer base {
+  html {
+    font-family: 'System', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @apply bg-[#1b1b1b] text-white;
+  }
+  
+  /* Sklandaus slinkimo efektai */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply overflow-x-hidden;
+  }
+  
+  /* Grain tekstūra ir miesto siluetai */
+  .grain-texture::before {
+    content: '';
+    @apply fixed inset-0 w-full h-full pointer-events-none z-10 opacity-20;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+  
+  /* City silhouette tekstūra */
+  .city-silhouette {
+    background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1200 300' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,250 L50,240 L100,260 L150,230 L200,250 L250,240 L300,260 L350,230 L400,240 L450,250 L500,220 L550,230 L600,250 L650,230 L700,240 L750,260 L800,240 L850,250 L900,230 L950,250 L1000,220 L1050,240 L1100,250 L1150,230 L1200,240 L1200,300 L0,300 Z' fill='rgba(0,0,0,0.8)'/%3E%3Cpath d='M50,260 L0,270 L0,300 L1200,300 L1200,270 L1150,280 L1100,260 L1050,290 L1000,270 L950,280 L900,260 L850,290 L800,270 L750,290 L700,270 L650,260 L600,280 L550,270 L500,290 L450,270 L400,260 L350,290 L300,270 L250,280 L200,270 L150,260 L100,280 L50,260 Z' fill='rgba(0,0,0,0.6)'/%3E%3C/svg%3E");
+    background-position: bottom;
+    background-repeat: repeat-x;
+    background-size: 100% 100px;
+  }
+}
+
+/* Animacijų stiliai */
+@layer components {
+  .parallax-bg {
+    @apply fixed inset-0 w-full h-full z-0 pointer-events-none;
+    transform: translateZ(-1px) scale(2);
+  }
+  
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-xl;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00ffb2] to-[#ff8c42];
+  }
+  
+  .terminal-text {
+    @apply font-mono;
+  }
+  
+  /* Interaktyvūs mygtukai */
+  .neon-button {
+    @apply relative px-6 py-3 rounded-lg bg-[#00ffb2] text-[#1b1b1b] font-bold overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_5px_rgba(0,255,178,0.5)];
+  }
+  
+  .neon-button:before {
+    content: '';
+    @apply absolute inset-0 bg-white/30 opacity-0 transition-opacity duration-300;
+  }
+  
+  .neon-button:hover:before {
+    @apply opacity-20;
+  }
+  
+  /* Scroll indikatorius */
+  .scroll-indicator {
+    @apply fixed right-4 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 z-50;
+  }
+  
+  .scroll-dot {
+    @apply w-2 h-2 rounded-full bg-white/30 transition-all duration-300;
+  }
+  
+  .scroll-dot.active {
+    @apply w-3 h-3 bg-[#00ffb2];
+  }
+  
+  /* Sekciją jungianti linija */
+  .connecting-line {
+    @apply absolute left-1/2 -translate-x-1/2 w-[2px] h-[100px] bg-gradient-to-b from-[#00ffb2] to-transparent;
+    top: -50px;
+  }
+  
+  /* Ikonų stiliai */
+  .ui-icon {
+    @apply inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+  }
+  
+  .ui-icon.transport-icon {
+    @apply text-[#ff8c42];
+  }
+  
+  .ui-icon.recycling-icon {
+    @apply text-[#00ffb2];
+  }
+  
+  .ui-icon.environment-icon {
+    @apply text-white;
+  }
+  
+  /* Transformacijos efektas - prieš ir po */
+  .transform-before-after {
+    @apply relative rounded-lg overflow-hidden;
+  }
+  
+  .transform-before-after .before-img,
+  .transform-before-after .after-img {
+    @apply absolute inset-0 bg-cover bg-center transition-opacity duration-700;
+  }
+  
+  .transform-before-after .before-img {
+    @apply opacity-100;
+  }
+  
+  .transform-before-after .after-img {
+    @apply opacity-0;
+  }
+  
+  .transform-before-after:hover .before-img {
+    @apply opacity-0;
+  }
+  
+  .transform-before-after:hover .after-img {
+    @apply opacity-100;
+  }
+  
+  /* Navigacija tarp sekcijų */
+  .section-divider {
+    @apply relative h-20 overflow-hidden;
+  }
+  
+  .section-arrow {
+    @apply absolute left-1/2 -translate-x-1/2 w-8 h-8 border-b-2 border-r-2 border-[#00ffb2] rotate-45 opacity-60 animate-bounce;
+    bottom: 20px;
+  }
+  
+  /* Custom icon set */
+  .icon-recycling {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2300ffb2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .icon-transport {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ff8c42'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .icon-environment {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Tamsesnis fono filtras nuotraukoms */
+  .dark-filter {
+    @apply relative;
+  }
+  
+  .dark-filter::before {
+    content: '';
+    @apply absolute inset-0 bg-[#1b1b1b] opacity-50 z-10 pointer-events-none;
+  }
+}

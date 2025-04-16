@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import heroBackground from '../assets/hero-bg-appliances.webp';
 import { trackCTAClick } from '../utils/analytics';
+import JourneySection from '../components/JourneySection';
 
 const Home = () => {
   // Add a handler for CTA clicks
@@ -170,6 +171,9 @@ const Home = () => {
             </div>
           </div>
         </section>
+
+        {/* Journey Section */}
+        <JourneySection item="buitinė technika" />
 
         {/* CTA Section */}
         <section className="py-12 sm:py-16 bg-[#167d36]">
