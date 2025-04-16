@@ -1,0 +1,13 @@
+# Primary domain redirect
+https://www.transportuok.lt/*  https://transportuok.lt/:splat  301!
+
+# Handle SPA routing
+/*  /index.html  200
+
+# Legacy redirects
+/siemka-lt-drabuziai-internetu/                   /                          301
+/kroviniu-pervezimas/                             /                          301
+/atlieku-isvezimas/                               /paslaugos/baldu-isvezimas 301
+/elektronikos-isvezimas/                          /paslaugos/elektronikos-atlieku-isvezimas 301
+/buitines-technikos-isvezimas/                    /paslaugos/buitines-technikos-isvezimas 301
+/transporto-uzsakymas-2/                          /kontaktai                 301
