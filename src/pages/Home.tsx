@@ -1,272 +1,115 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
-import heroBackground from '../assets/hero-bg-appliances.webp';
-import { trackCTAClick } from '../utils/analytics';
-import JourneySection from '../components/JourneySection';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import HeroSection from '../../components/HeroSection';
+import MissionSection from '../../components/MissionSection';
+import JourneySection from '../../components/JourneySection';
 
-const Home = () => {
-  // Add a handler for CTA clicks
-  const handleCTAClick = (ctaId: string, ctaText: string) => {
-    trackCTAClick(ctaId, ctaText);
+export default function Home() {
+  const [selectedItem, setSelectedItem] = useState('daiktas');
+
+  const selectItem = (item: string) => {
+    setSelectedItem(item);
+    // Slenka žemyn iki kelionės sekcijos
+    document.getElementById('journey-section')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <>
-      <Helmet>
-        <title>Nemokamas buitinės technikos išvežimas Kaune | Transportuok.lt</title>
-        <meta name="description" content="Nemokamas šaldytuvų, skalbimo mašinų ir kitos buitinės technikos išvežimas Kaune. Atliekų surinkimas greitai ir patikimai. Užsakykite išvežimą dabar - atvykstame per 24 val." />
-        <link rel="canonical" href="https://transportuok.lt" />
-      </Helmet>
-
-      <div className="min-h-screen">
-        {/* Hero Section */}
-        <section
-          className="relative min-h-[80vh] sm:h-[600px] pt-[96px] flex items-center justify-center bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroBackground})` }}
-        >
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black/40 z-0" />
-
-          {/* Content */}
-          <div className="relative z-10 max-w-3xl text-center px-4">
-            <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-4 text-white">
-              Nemokamas buitinės technikos išvežimas Kaune
-            </h1>
-            <p className="text-lg sm:text-xl text-gray-100 mb-6">
-              Užpildykite užklausą bet kuriuo metu – susisieksime per 24 val.
-            </p>
-            <Link
-              to="/kontaktai#contact-form"
-              className="inline-block bg-[#167d36] hover:bg-[#0f5a26] text-white font-bold text-base px-6 py-3 rounded-lg shadow-md transition-colors"
-              onClick={() => handleCTAClick('hero_cta', 'Pateikti užklausą')}
+    <div>
+      <HeroSection onItemSubmit={selectItem} />
+      
+      {/* Daikto tipo pasirinkimas */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
+            Pasirinkite perdirbamo daikto tipą
+          </h2>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Buitinė technika */}
+            <div 
+              className={`p-5 border rounded-lg shadow-md cursor-pointer transition-all hover:shadow-lg 
+                ${selectedItem === 'buitinė technika' ? 'border-green-600 bg-green-50' : 'border-gray-200'}`}
+              onClick={() => selectItem('buitinė technika')}
             >
-              Pateikti užklausą
-            </Link>
-          </div>
-        </section>
-
-        {/* Services Section */}
-        <section className="py-16 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-              Mūsų teikiamos paslaugos
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <picture>
-                  <source srcSet="/images/buitine-technika.webp" type="image/webp" />
-                  <img
-                    src="/images/buitine-technika.webp"
-                    alt="Nemokamas šaldytuvų ir skalbimo mašinų išvežimas Kaune"
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                    width="600"
-                    height="192"
-                    loading="lazy"
-                  />
-                </picture>
-                <Link to="/paslaugos/buitines-technikos-isvezimas">
-                  <h3 className="text-xl font-semibold mb-4 hover:text-green-600 transition-colors">
-                    Buitinės technikos išvežimas
-                  </h3>
-                </Link>
-                <p className="text-gray-600 mb-4">
-                  Išvežame <Link to="/paslaugos/buitines-technikos-isvezimas" className="text-green-600 hover:text-green-700">šaldytuvus, skalbimo mašinas, virykles</Link> ir kitus buities prietaisus – nemokamai.
-                </p>
-                <Link 
-                  to="/kontaktai#contact-form" 
-                  className="inline-block bg-[#167d36] hover:bg-[#0f5a26] text-white font-bold px-6 py-3 rounded-lg transition-colors"
-                  onClick={() => handleCTAClick('service_cta_appliances', 'Gauti nemokamą išvežimą')}
-                >
-                  Gauti nemokamą išvežimą
-                </Link>
+              <div className="flex items-center mb-4">
+                <span className="text-3xl mr-3">❄️</span>
+                <h3 className="text-xl font-semibold">Buitinė technika</h3>
               </div>
-              
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <picture>
-                  <source srcSet="/images/elektronika.webp" type="image/webp" />
-                  <img
-                    src="/images/elektronika.webp"
-                    alt="Elektronikos atliekų surinkimas ir perdirbimas Kaune"
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                    width="600"
-                    height="192"
-                    loading="lazy"
-                  />
-                </picture>
-                <Link to="/paslaugos/elektronikos-atlieku-isvezimas">
-                  <h3 className="text-xl font-semibold mb-4 hover:text-green-600 transition-colors">
-                    Elektronikos išvežimas
-                  </h3>
-                </Link>
-                <p className="text-gray-600 mb-4">
-                  <Link to="/paslaugos/elektronikos-atlieku-isvezimas" className="text-green-600 hover:text-green-700">Kompiuterių, monitorių, televizorių</Link> ir kitos elektronikos išvežimas bei utilizavimas.
-                </p>
-                <Link 
-                  to="/kontaktai#contact-form" 
-                  className="inline-block bg-[#167d36] hover:bg-[#0f5a26] text-white font-bold px-6 py-3 rounded-lg transition-colors"
-                  onClick={() => handleCTAClick('service_cta_electronics', 'Susisiekti dėl išvežimo')}
-                >
-                  Susisiekti dėl išvežimo
-                </Link>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <picture>
-                  <source srcSet="/images/baldai.webp" type="image/webp" />
-                  <img
-                    src="/images/baldai.webp"
-                    alt="Senų baldų išvežimas Kaune"
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                    width="600"
-                    height="192"
-                    loading="lazy"
-                  />
-                </picture>
-                <Link to="/paslaugos/baldu-isvezimas">
-                  <h3 className="text-xl font-semibold mb-4 hover:text-green-600 transition-colors">
-                    Baldų išvežimas
-                  </h3>
-                </Link>
-                <p className="text-gray-600 mb-4">
-                  <Link to="/paslaugos/baldu-isvezimas" className="text-green-600 hover:text-green-700">Lovų, spintų, sofų, čiužinių</Link> ir kitų didelių daiktų išvežimas už simbolinį mokestį.
-                </p>
-                <Link 
-                  to="/kontaktai#contact-form" 
-                  className="inline-block bg-[#167d36] hover:bg-[#0f5a26] text-white font-bold px-6 py-3 rounded-lg transition-colors"
-                  onClick={() => handleCTAClick('service_cta_furniture', 'Užsakyti išvežimą')}
-                >
-                  Užsakyti išvežimą
-                </Link>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <picture>
-                  <source srcSet="/images/metalo-lauzas.webp" type="image/webp" />
-                  <img
-                    src="/images/metalo-lauzas.webp"
-                    alt="Metalo laužo surinkimas ir išvežimas Kaune"
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                    width="600"
-                    height="192"
-                    loading="lazy"
-                  />
-                </picture>
-                <Link to="/paslaugos/metalo-lauzo-isvezimas">
-                  <h3 className="text-xl font-semibold mb-4 hover:text-green-600 transition-colors">
-                    Metalo laužo išvežimas
-                  </h3>
-                </Link>
-                <p className="text-gray-600 mb-4">
-                  Surenkame ir nemokamai išvežame <Link to="/paslaugos/metalo-lauzo-isvezimas" className="text-green-600 hover:text-green-700">metalo atliekas</Link> iš namų, garažų, sandėlių.
-                </p>
-                <Link 
-                  to="/kontaktai#contact-form" 
-                  className="inline-block bg-[#167d36] hover:bg-[#0f5a26] text-white font-bold px-6 py-3 rounded-lg transition-colors"
-                  onClick={() => handleCTAClick('service_cta_metal', 'Užsakyti išvežimą')}
-                >
-                  Užsakyti išvežimą
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Journey Section */}
-        <JourneySection item="buitinė technika" />
-
-        {/* CTA Section */}
-        <section className="py-12 sm:py-16 bg-[#167d36]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-              Reikia išvežti seną buitinę techniką ar elektronikos atliekas?
-            </h2>
-            <p className="text-base sm:text-xl text-white mb-8">
-              Užpildykite užklausą dabar ir gaukite nemokamą išvežimą!
-            
-            </p>
-            <Link
-              to="/kontaktai#contact-form"
-              className="inline-block bg-white text-[#167d36] px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-bold hover:bg-gray-100 transition-colors transform hover:scale-105 shadow-lg"
-              onClick={() => handleCTAClick('cta_section', 'Gauti nemokamą išvežimą')}
-            >
-              Gauti nemokamą išvežimą
-            </Link>
-          </div>
-        </section>
-
-        {/* Reviews Section */}
-        <section className="py-16 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-              Klientų atsiliepimai
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <div className="flex items-center mb-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
-                      <span className="text-xl font-semibold text-[#167d36]">T</span>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-semibold">Tomas Petrauskas</h3>
-                    <p className="text-gray-500">Kaunas</p>
-                  </div>
-                </div>
-                <p className="text-gray-600">
-                  "Labai operatyvus ir profesionalus aptarnavimas. Atvyko laiku ir greitai išnešė seną šaldytuvą."
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <div className="flex items-center mb-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
-                      <span className="text-xl font-semibold text-[#167d36]">L</span>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-semibold">Laura Kazlauskienė</h3>
-                    <p className="text-gray-500">Kaunas</p>
-                  </div>
-                </div>
-                <p className="text-gray-600">
-                  "Puiki paslauga! Išvežė seną skalbimo mašiną ir indaplovę. Rekomenduoju visiems."
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <div className="flex items-center mb-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
-                      <span className="text-xl font-semibold text-[#167d36]">M</span>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-semibold">Marius Jonaitis</h3>
-                    <p className="text-gray-500">Kaunas</p>
-                  </div>
-                </div>
-                <p className="text-gray-600">
-                  "Greitai ir kokybiškai išvežė senus baldus. Labai patenkinti paslaugomis."
-                </p>
-              </div>
-            </div>
-            <div className="flex justify-center mt-8">
-              <a 
-                href="https://g.page/r/CX7p6Kq_HZ-pEB0/review"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-white text-[#167d36] px-6 py-3 rounded-lg font-bold border-2 border-[#167d36] hover:bg-[#167d36] hover:text-white transition-colors"
-                onClick={() => handleCTAClick('review_cta', 'Palikite atsiliepimą')}
+              <p className="text-gray-600 mb-4">Šaldytuvai, skalbimo mašinos, mikrobangų krosnelės ir kiti buitiniai prietaisai.</p>
+              <button 
+                className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
+                onClick={() => selectItem('buitinė technika')}
               >
-                Palikite atsiliepimą
-              </a>
+                Žiūrėti kelionę
+              </button>
+            </div>
+            
+            {/* Elektronika */}
+            <div 
+              className={`p-5 border rounded-lg shadow-md cursor-pointer transition-all hover:shadow-lg 
+                ${selectedItem === 'elektronika' ? 'border-indigo-600 bg-indigo-50' : 'border-gray-200'}`}
+              onClick={() => selectItem('elektronika')}
+            >
+              <div className="flex items-center mb-4">
+                <span className="text-3xl mr-3">📱</span>
+                <h3 className="text-xl font-semibold">Elektronika</h3>
+              </div>
+              <p className="text-gray-600 mb-4">Telefonai, kompiuteriai, televizoriai ir kiti elektroniniai prietaisai.</p>
+              <button 
+                className="w-full py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition-colors"
+                onClick={() => selectItem('elektronika')}
+              >
+                Žiūrėti kelionę
+              </button>
+            </div>
+            
+            {/* Baldai */}
+            <div 
+              className={`p-5 border rounded-lg shadow-md cursor-pointer transition-all hover:shadow-lg 
+                ${selectedItem === 'baldai' ? 'border-green-700 bg-green-50' : 'border-gray-200'}`}
+              onClick={() => selectItem('baldai')}
+            >
+              <div className="flex items-center mb-4">
+                <span className="text-3xl mr-3">🪑</span>
+                <h3 className="text-xl font-semibold">Baldai</h3>
+              </div>
+              <p className="text-gray-600 mb-4">Stalai, kėdės, spintos, sofos ir kiti baldai iš namų ar biuro.</p>
+              <button 
+                className="w-full py-2 bg-green-700 text-white rounded hover:bg-green-800 transition-colors"
+                onClick={() => selectItem('baldai')}
+              >
+                Žiūrėti kelionę
+              </button>
+            </div>
+            
+            {/* Metalo laužas */}
+            <div 
+              className={`p-5 border rounded-lg shadow-md cursor-pointer transition-all hover:shadow-lg 
+                ${selectedItem === 'metalo laužas' ? 'border-blue-600 bg-blue-50' : 'border-gray-200'}`}
+              onClick={() => selectItem('metalo laužas')}
+            >
+              <div className="flex items-center mb-4">
+                <span className="text-3xl mr-3">🔧</span>
+                <h3 className="text-xl font-semibold">Metalo laužas</h3>
+              </div>
+              <p className="text-gray-600 mb-4">Metalinės konstrukcijos, įrankiai, automobilių dalys ir kiti metaliniai daiktai.</p>
+              <button 
+                className="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+                onClick={() => selectItem('metalo laužas')}
+              >
+                Žiūrėti kelionę
+              </button>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
+      
+      {/* Kelionės sekcija */}
+      <div id="journey-section">
+        <JourneySection item={selectedItem} />
       </div>
-    </>
+      
+      <MissionSection />
+    </div>
   );
-};
-
-export default Home;
+}

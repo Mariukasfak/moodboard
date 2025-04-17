@@ -3,8 +3,8 @@ import { Star } from 'lucide-react';
 
 // Global variable to track script loading
 const GOOGLE_MAPS_SCRIPT_ID = 'google-maps-script';
-const API_KEY = 'AIzaSyCqDMeJYhYRQylvB9I6artLkAo_EuK4gKc';
-const PLACE_ID = 'ChIJ7c7B8XnZ50YRu13wXwVdK4U';
+const API_KEY = '';
+const PLACE_ID = '';
 
 interface Review {
   author_name: string;
