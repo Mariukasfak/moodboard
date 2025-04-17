@@ -1,16 +1,102 @@
 {
   "polyfillFiles": [
-    "static/chunks/polyfills.js"
+    "static/chunks/polyfills-42372ed130431b0a.js"
   ],
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/development/_buildManifest.js",
-    "static/development/_ssgManifest.js"
+    "static/67QSm8mz6xA922pEGIueK/_buildManifest.js",
+    "static/67QSm8mz6xA922pEGIueK/_ssgManifest.js"
   ],
-  "rootMainFiles": [],
+  "rootMainFiles": [
+    "static/chunks/webpack-a2deb62b7f08a2c8.js",
+    "static/chunks/fd9d1056-6922f449a204c2cc.js",
+    "static/chunks/117-7cca362a5d8624e9.js",
+    "static/chunks/main-app-f88b375af3196755.js"
+  ],
   "pages": {
-    "/_app": []
+    "/About": [
+      "static/chunks/webpack-a2deb62b7f08a2c8.js",
+      "static/chunks/framework-bb8e5fe4444210f7.js",
+      "static/chunks/main-a21ad81bb74f7800.js",
+      "static/chunks/pages/About-53859924f8ec9f03.js"
+    ],
+    "/Blog": [
+      "static/chunks/webpack-a2deb62b7f08a2c8.js",
+      "static/chunks/framework-bb8e5fe4444210f7.js",
+      "static/chunks/main-a21ad81bb74f7800.js",
+      "static/chunks/ae7979ef-db4a8a1789dafc63.js",
+      "static/chunks/pages/Blog-6d4132acbb81bee3.js"
+    ],
+    "/Contact": [
+      "static/chunks/webpack-a2deb62b7f08a2c8.js",
+      "static/chunks/framework-bb8e5fe4444210f7.js",
+      "static/chunks/main-a21ad81bb74f7800.js",
+      "static/chunks/182-6f708fe56f612295.js",
+      "static/chunks/pages/Contact-ccb11bac18787806.js"
+    ],
+    "/Home": [
+      "static/chunks/webpack-a2deb62b7f08a2c8.js",
+      "static/chunks/framework-bb8e5fe4444210f7.js",
+      "static/chunks/main-a21ad81bb74f7800.js",
+      "static/chunks/411-9832354ddc87b25e.js",
+      "static/chunks/pages/Home-d8a7482bc0d358e9.js"
+    ],
+    "/Naujienos": [
+      "static/chunks/webpack-a2deb62b7f08a2c8.js",
+      "static/chunks/framework-bb8e5fe4444210f7.js",
+      "static/chunks/main-a21ad81bb74f7800.js",
+      "static/chunks/ae7979ef-db4a8a1789dafc63.js",
+      "static/chunks/pages/Naujienos-2a7e9026faed4e8c.js"
+    ],
+    "/Services": [
+      "static/chunks/webpack-a2deb62b7f08a2c8.js",
+      "static/chunks/framework-bb8e5fe4444210f7.js",
+      "static/chunks/main-a21ad81bb74f7800.js",
+      "static/chunks/ae7979ef-db4a8a1789dafc63.js",
+      "static/chunks/pages/Services-838ba3652a311d5c.js"
+    ],
+    "/_app": [
+      "static/chunks/webpack-a2deb62b7f08a2c8.js",
+      "static/chunks/framework-bb8e5fe4444210f7.js",
+      "static/chunks/main-a21ad81bb74f7800.js",
+      "static/chunks/pages/_app-72b849fbd24ac258.js"
+    ],
+    "/_error": [
+      "static/chunks/webpack-a2deb62b7f08a2c8.js",
+      "static/chunks/framework-bb8e5fe4444210f7.js",
+      "static/chunks/main-a21ad81bb74f7800.js",
+      "static/chunks/pages/_error-7ba65e1336b92748.js"
+    ],
+    "/services/Baldai": [
+      "static/chunks/webpack-a2deb62b7f08a2c8.js",
+      "static/chunks/framework-bb8e5fe4444210f7.js",
+      "static/chunks/main-a21ad81bb74f7800.js",
+      "static/chunks/ae7979ef-db4a8a1789dafc63.js",
+      "static/chunks/pages/services/Baldai-3395660c7f6a10ab.js"
+    ],
+    "/services/BuitineTechnika": [
+      "static/chunks/webpack-a2deb62b7f08a2c8.js",
+      "static/chunks/framework-bb8e5fe4444210f7.js",
+      "static/chunks/main-a21ad81bb74f7800.js",
+      "static/chunks/ae7979ef-db4a8a1789dafc63.js",
+      "static/chunks/786-95bc486cd30b68e7.js",
+      "static/chunks/pages/services/BuitineTechnika-961008182feb8b86.js"
+    ],
+    "/services/Elektronika": [
+      "static/chunks/webpack-a2deb62b7f08a2c8.js",
+      "static/chunks/framework-bb8e5fe4444210f7.js",
+      "static/chunks/main-a21ad81bb74f7800.js",
+      "static/chunks/ae7979ef-db4a8a1789dafc63.js",
+      "static/chunks/pages/services/Elektronika-4bc2a48e4b6e6157.js"
+    ],
+    "/services/MetaloLauzas": [
+      "static/chunks/webpack-a2deb62b7f08a2c8.js",
+      "static/chunks/framework-bb8e5fe4444210f7.js",
+      "static/chunks/main-a21ad81bb74f7800.js",
+      "static/chunks/ae7979ef-db4a8a1789dafc63.js",
+      "static/chunks/pages/services/MetaloLauzas-2d6e2262ff4eac85.js"
+    ]
   },
   "ampFirstPages": []
 }

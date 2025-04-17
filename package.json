@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "next export",
     "lint": "next lint",
     "optimize-images": "node scripts/optimize-images.js",
     "generate-sitemap": "node scripts/generate-sitemap.js"

@@ -74,7 +74,16 @@ const GoogleReviews: React.FC = () => {
             status === window.google.maps.places.PlacesServiceStatus.OK &&
             place?.reviews
           ) {
-            setReviews(place.reviews);
+            // Normalizuoti Google atsiliepimus, užpildant reitingą default'u, jei undefined
+            const normalized = place.reviews.map(r => ({
+              author_name: r.author_name,
+              profile_photo_url: r.profile_photo_url,
+              rating: r.rating ?? 0,
+              relative_time_description: r.relative_time_description,
+              text: r.text,
+              time: r.time
+            }));
+            setReviews(normalized);
             if (place.rating) {
               setAverageRating(place.rating);
             }
