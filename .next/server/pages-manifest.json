@@ -1,15 +1,1 @@
-{
-  "/_error": "pages/_error.js",
-  "/_app": "pages/_app.js",
-  "/Home": "pages/Home.js",
-  "/About": "pages/About.js",
-  "/Contact": "pages/Contact.js",
-  "/Blog": "pages/Blog.js",
-  "/Services": "pages/Services.js",
-  "/services/BuitineTechnika": "pages/services/BuitineTechnika.js",
-  "/services/Baldai": "pages/services/Baldai.js",
-  "/services/Elektronika": "pages/services/Elektronika.js",
-  "/Naujienos": "pages/Naujienos.js",
-  "/services/MetaloLauzas": "pages/services/MetaloLauzas.js",
-  "/_document": "pages/_document.js"
-}
+{}

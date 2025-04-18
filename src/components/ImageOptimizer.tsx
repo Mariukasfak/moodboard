@@ -45,7 +45,7 @@ const ImageOptimizer: React.FC<ImageOptimizerProps> = ({
         width={width}
         height={height}
         loading={loading}
-        fetchpriority={fetchPriority}
+        fetchPriority={fetchPriority}
       />
     </picture>
   );
